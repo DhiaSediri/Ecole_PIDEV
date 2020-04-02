@@ -1,0 +1,22 @@
+<h1>Mise à jour du modele :</h1>
+
+{{ form_start(form) }}
+
+<table>
+    <tr>
+        <td>libelle</td>
+        <td>{{ form_widget(form.libelle) }}</td>
+    </tr>
+    <tr>
+        <td>pays</td>
+        <td>{{ form_widget(form.Pays) }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>{{ form_widget(form.save) }}</td>
+    </tr>
+
+</table>
+
+{{ form_end(form) }}
+

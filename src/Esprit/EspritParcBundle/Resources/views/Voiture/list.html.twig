@@ -1,0 +1,76 @@
+<h1> Liste des voitures :</h1>
+
+<ul xmlns="">
+    {% for marque in marques %}
+        <li> {{ marque |upper }}</li>
+
+    {% else %}
+        <strong> la liste des marques est vide </strong>
+    {% endfor %}
+</ul>
+
+<h4 id="logo"> Afficher logo voiture </h4>
+<img src="{{ asset('image/logo.png') }}" > <!--hidden-->
+
+<table border="8">
+    <tr>
+        <th>Id </th>
+        <th>série </th>
+        <th>Marque </th>
+        <th>Details </th>
+    </tr>
+
+    {% for voiture in voitures %}
+        <tr>
+            <td> {{ voiture.id  }}</td><td> {{ voiture.serie }}</td><td> {{ voiture.marque }}</td>
+            <td> <a href="{{ path('AfficheDetail',{'id':voiture.id,'serie':voiture.serie,'marque':voiture.marque }) }}" target="_blank">Afficher</a> </td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+
+<input id="btn" type="button" value="Cacher">
+<input id="btn1" type="button" value="Afficher">
+<input id="btn2" type="button" value="Toggle">
+<br>
+<input id="btn3" type="button" value="Vider">
+<input id="btn4" type="button" value="Supprimer">
+
+<script src="{{ asset('js/jquery.js') }}"> </script>
+<script>
+
+    $(document).ready(function() {
+        $('img').hide();
+    });
+
+    $('#btn').click(function () {
+        $('table').hide();
+    });
+
+    $('#btn1').click(function () {
+        $('table').show();
+    });
+
+    $('#btn2').click(function () {
+        $('table').toggle();
+    });
+
+    $('#logo').mouseenter(function () {
+        $('img').show();
+        $(this).html("logo affiché").css('color','red');
+    });
+
+    $('img').click(function () {
+        $(this).css('width','100px').css('height','100px').slideUp(2000).slideDown(2000);
+    });
+
+    $('#btn3').click(function () {
+        $('tr').empty();
+    });
+
+    $('#btn4').click(function () {
+        $('table').remove();
+    });
+
+</script>

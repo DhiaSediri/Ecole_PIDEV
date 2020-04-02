@@ -1,0 +1,26 @@
+<h1>Liste des voitures :</h1>
+
+<table border="1">
+    <tr>
+        <td>Ref</td>
+        <td>Série</td>
+        <td>Date de circulation</td>
+        <td>Modele</td>
+    </tr>
+    {% for entity in voitures %}
+        <tr>
+            <td>
+                {{ entity.ref }}
+            </td>
+            <td>
+                {{ entity.serie }}
+            </td>
+            <td>
+                {{ entity.datemisecirculation|date }}
+            </td>
+            <td>
+                {{ entity.modele.libelle }}
+            </td>
+        </tr>
+    {% endfor %}
+</table>

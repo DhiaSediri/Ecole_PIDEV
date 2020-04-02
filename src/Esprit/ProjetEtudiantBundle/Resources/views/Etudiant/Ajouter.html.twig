@@ -1,0 +1,35 @@
+<html><head><title>Ajout des Etudiant</title></head>
+<body>
+<center>
+    <h1>Ajouter un Etudiant</h1>
+    <fieldset style="width: 50%">
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+    </fieldset>
+</center>
+</body>
+</html>
+
+
+
+<form method="post">
+
+    Matricule: <input type="text" name="matricule"><br>
+
+    Nom:<input type="text" name="nom"><br>
+
+    Prénom:<input type="text" name="prenom"><br>
+
+    <SELECT name="niveau" size="1">
+
+        <OPTION>3A
+        <OPTION>4TWIN
+        <OPTION>4SIM
+
+    </SELECT>
+
+    Numéro Classe:<input type="text" name="pays"><br>
+
+    <input type="submit" value="Ajouter">
+
+</form>

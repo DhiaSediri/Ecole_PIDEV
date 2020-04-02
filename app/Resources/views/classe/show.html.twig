@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('template/images/bg_2.jpg') }}');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                    <h1 class="mb-2 bread">Classe</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Classe <i class="ion-ios-arrow-forward"></i></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h1>Classe</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ classe.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ classe.nom }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ classe.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Capacite</th>
+                <td>{{ classe.capacite }}</td>
+            </tr>
+
+            <tr>
+                <th>Séances</th>
+                {% for s in classe.seances %}
+                    <td>{{ s.prof.nom }}</td>
+                {% endfor %}
+            </tr>
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('classe_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('classe_edit', { 'id': classe.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

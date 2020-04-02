@@ -1,0 +1,7 @@
+#esprit_scolarite_homepage:
+#    path:     /home
+#    defaults: { _controller: EspritScolariteBundle:Default:index }
+
+#esprit_scolarite_mail:
+#    path:     /mail
+#    defaults: { _controller: EspritScolariteBundle:Mail:Send }

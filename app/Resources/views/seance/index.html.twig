@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('template/images/bg_2.jpg') }}');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                    <h1 class="mb-2 bread">Séance</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                                        class="ion-ios-arrow-forward"></i></a></span> <span>Séance <i
+                                    class="ion-ios-arrow-forward"></i></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h1>Seances list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Classe</th>
+            <th>Matiere</th>
+            <th>Salle</th>
+            <th>Prof</th>
+            <th>Horaire</th>
+            <th>Jour</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for seance in seances %}
+            <tr>
+                <td><a href="{{ path('seance_show', { 'id': seance.id }) }}">{{ seance.id }}</a></td>
+                <td>{{ seance.classe.nom }}</td>
+                <td>{{ seance.matiere.nom }}</td>
+                <td>{{ seance.salle.nom }}</td>
+                <td>{{ seance.prof.nom }}</td>
+                <td>{{ seance.horaire.nom }}</td>
+                <td>{{ seance.jour.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('seance_show', { 'id': seance.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('seance_edit', { 'id': seance.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('seance_new') }}">Create a new seance</a>
+        </li>
+    </ul>
+
+    <form action="{{ path('afficher_emploi') }}" method="post">
+        <select id="selectedProf" name="prof" id="prof">
+            {% for prof in profs %}
+                <option value="{{ prof.id }}">{{ prof.nom }}</option>
+
+            {% endfor %}
+        </select>
+        <input type="submit" value="Afficher emploi">
+        <a id="btnEnvoyerEmploi" href="#">envoyer l'emploi</a>
+    </form>
+    {% if emploiProf != null %}
+        <h1>list emploi prof</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Classe</th>
+                <th>Matiere</th>
+                <th>Salle</th>
+                <th>Prof</th>
+                <th>Horaire</th>
+                <th>Jour</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for seance in emploiProf %}
+                <tr>
+                    <td><a href="{{ path('seance_show', { 'id': seance.id }) }}">{{ seance.id }}</a></td>
+                    <td>{{ seance.classe.nom }}</td>
+                    <td>{{ seance.matiere.nom }}</td>
+                    <td>{{ seance.salle.nom }}</td>
+                    <td>{{ seance.prof.nom }}</td>
+                    <td>{{ seance.horaire.nom }}</td>
+                    <td>{{ seance.jour.nom }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('seance_show', { 'id': seance.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('seance_edit', { 'id': seance.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+
+{% endblock %}
+ {% block javascripts %}
+     <script>
+         $(document).ready(function() {
+                 $('#btnEnvoyerEmploi').click(function () {
+                     console
+                         .log( $('#selectedProf').val());
+                     $.post("{{ path('mail') }}", {idProf: $('#selectedProf').val()})
+                         .done(function (data) {
+                             console.log("succees");
+                             alert("Data Loaded: " + data);
+                         }).fail(function () {
+                         alert("erreu");
+                     });
+                 });
+             }
+         );
+     </script>
+
+
+ {% endblock %}

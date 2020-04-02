@@ -1,0 +1,27 @@
+<h1> Chercher modele par pays </h1>
+
+<form method="POST">
+
+    Pays <input type="text" name="pays">
+
+    <input type="submit" name="submit" value="Chercher">
+
+</form>
+
+<table border="8">
+
+    <tr>
+        <th>Id </th>
+        <th>Libellé </th>
+        <th>Pays </th>
+    </tr>
+
+    {% for modele in modeles %}
+        <tr>
+            <td> {{ modele.id  }}</td>
+            <td> {{ modele.libelle }}</td>
+            <td> {{ modele.pays }}</td>
+        </tr>
+    {% endfor %}
+
+</table>

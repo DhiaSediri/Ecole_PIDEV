@@ -1,0 +1,44 @@
+esprit_scolarite_seance:
+    resource: "@EspritScolariteBundle/Controller/SeanceController.php"
+    type:     annotation
+
+esprit_scolarite_classe:
+    resource: "@EspritScolariteBundle/Controller/ClasseController.php"
+    type:     annotation
+
+esprit_scolarite_matiere:
+    resource: "@EspritScolariteBundle/Controller/MatiereController.php"
+    type:     annotation
+
+esprit_scolarite_salle:
+    resource: "@EspritScolariteBundle/Controller/SalleController.php"
+    type:     annotation
+
+esprit_scolarite_home:
+    resource: "@EspritScolariteBundle/Controller/DefaultController.php"
+    type:     annotation
+
+esprit_scolarite:
+    resource: "@EspritScolariteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+esprit_parc:
+    resource: "@EspritParcBundle/Resources/config/routing.yml"
+    prefix:   /
+
+esprit_reservation:
+    resource: "@EspritReservationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+esprit_projet_etudiant:
+    resource: "@EspritProjetEtudiantBundle/Resources/config/routing.yml"
+    prefix:   /
+
+esprit_esprit_parc:
+    resource: "@EspritEspritParcBundle/Resources/config/routing.yml"
+    prefix:   /Parc
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+

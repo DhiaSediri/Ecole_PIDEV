@@ -1,0 +1,19 @@
+<h1> Liste des modeles avec Query Builder: </h1>
+
+<table border="8">
+
+    <tr>
+        <th>Id </th>
+        <th>Libellé </th>
+        <th>Pays </th>
+    </tr>
+
+    {% for modele in modeles %}
+        <tr>
+            <td> {{ modele.id  }}</td>
+            <td> {{ modele.libelle }}</td>
+            <td> {{ modele.pays }}</td>
+        </tr>
+    {% endfor %}
+
+</table>

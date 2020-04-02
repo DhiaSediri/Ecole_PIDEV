@@ -1,0 +1,88 @@
+esprit_esprit_parc_homepage:
+    path:     /
+    defaults: { _controller: EspritEspritParcBundle:Default:index }
+
+esprit_esprit_parc_affichage:
+    path:     /affichage/{marque}
+    defaults: { _controller: EspritEspritParcBundle:Voiture:affichage }
+
+esprit_esprit_parc_liste:
+    path:     /list
+    defaults: { _controller: EspritEspritParcBundle:Voiture:list }
+
+esprit_esprit_parc_liste2:
+    path:     /list2
+    defaults: { _controller: EspritEspritParcBundle:Voiture:list2 }
+
+AfficheDetail:
+    path:     /detail
+    defaults: { _controller: EspritEspritParcBundle:Voiture:detail }
+
+esprit_esprit_parc_afficher_Modele:
+    path:     /affichermodele
+    defaults: { _controller: EspritEspritParcBundle:Modele:afficherModele }
+
+esprit_esprit_parc_ajouter_Modele:
+        path:     /ajoutermodele
+        defaults: { _controller: EspritEspritParcBundle:Modele:ajouterModele }
+
+esprit_esprit_parc_modifier_Modele:
+        path:     /modifiermodele/{id}
+        defaults: { _controller: EspritEspritParcBundle:Modele:modifierModele }
+
+esprit_esprit_parc_supprimer_Modele:
+        path:     /supprimermodele/{id}
+        defaults: { _controller: EspritEspritParcBundle:Modele:supprimerModele }
+
+esprit_esprit_parc_chercher_Modele:
+        path:     /cherchermodele
+        defaults: { _controller: EspritEspritParcBundle:Modele:chercherModele }
+
+esprit_esprit_parc_afficher_Voiture:
+        path:     /affichervoiture
+        defaults: { _controller: EspritEspritParcBundle:Voitures:afficherVoiture }
+
+esprit_esprit_parc_ajouter_Voiture:
+        path:     /ajoutervoiture
+        defaults: { _controller: EspritEspritParcBundle:Voitures:ajouterVoiture }
+
+esprit_esprit_parc_modifier_Voiture:
+        path:     /modifiervoiture/{id}
+        defaults: { _controller: EspritEspritParcBundle:Voitures:modifierVoiture }
+
+esprit_esprit_parc_supprimer_Voiture:
+        path:     /supprimervoiture/{id}
+        defaults: { _controller: EspritEspritParcBundle:Voitures:supprimerVoiture }
+
+esprit_esprit_parc_chercher_Voiture:
+        path:     /cherchervoiture
+        defaults: { _controller: EspritEspritParcBundle:Voitures:chercherVoiture }
+
+QueryBuilder_Modele:
+        path:     /Query
+        defaults: { _controller: EspritEspritParcBundle:Modele:queryBuilder }
+
+Affiche_ModeleDQL:
+        path:     /DQL
+        defaults: { _controller: EspritEspritParcBundle:Modele:findPaysDQL }
+
+Affiche2_ModeleDQL:
+        path:     /DQL2/{pays}
+        defaults: { _controller: EspritEspritParcBundle:Modele:findPaysParameter }
+
+esprit_Projet_Etudiant_afficher_Projet:
+    path:     /afficherprojet
+    defaults: { _controller: EspritProjetEtudiantBundle:Projet:AfficherProjet }
+
+esprit_Projet_Etudiant_supprimer_Projet:
+    path:     /supprimerprojet/{id}
+    defaults: { _controller: EspritProjetEtudiantBundle:Projet:SupprimerProjet }
+
+esprit_Projet_Etudiant_ajouter_Etudiant:
+    path:     /ajouteretudiant
+    defaults: { _controller: EspritProjetEtudiantBundle:Etudiant:AjouterEtudiant }
+
+esprit_Projet_Etudiant_count_Etudiant:
+    path:     /count
+    defaults: { _controller: EspritProjetEtudiantBundle:Etudiant:countEtudiant }
+

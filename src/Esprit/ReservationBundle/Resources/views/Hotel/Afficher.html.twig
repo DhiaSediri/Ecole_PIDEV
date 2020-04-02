@@ -1,0 +1,28 @@
+<h1>Liste des hotels :</h1>
+
+<table border="8">
+
+    <tr>
+        <th>Id </th>
+        <th>Nom </th>
+        <th>Lieu </th>
+        <th>Etat </th>
+        <th>Prix </th>
+        <th>Reserver </th>
+
+
+    </tr>
+
+    {% for hotel in hotels %}
+        <tr>
+            <td> {{ hotel.id  }}</td>
+            <td> {{ hotel.nom }}</td>
+            <td> {{ hotel.lieu }}</td>
+            <td> {{ hotel.etat }}</td>
+            <td> {{ hotel.prix }}</td>
+            <td><a href="{{ path("esprit_reservation_ajouterreservation") }}">Reserver</a></td>
+            <td><a href="{{ path("esprit_reservation_rechercherparlieux") }}">Comparer les prix</a></td>
+        </tr>
+    {% endfor %}
+
+</table>

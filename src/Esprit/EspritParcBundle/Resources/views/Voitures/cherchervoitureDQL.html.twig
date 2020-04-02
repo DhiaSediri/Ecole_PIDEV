@@ -1,0 +1,33 @@
+<h1> Rehercher DQL Voiture par série </h1>
+
+{{ form(form) }}
+
+<table border="8">
+
+    <tr>
+        <td>Ref</td>
+        <td>Série</td>
+        <td>Date de circulation</td>
+        <td>Modele</td>
+    </tr>
+
+    {% for entity in voitures %}
+        <tr>
+        <tr>
+            <td>
+                {{ entity.ref }}
+            </td>
+            <td>
+                {{ entity.serie }}
+            </td>
+            <td>
+                {{ entity.datemisecirculation|date }}
+            </td>
+            <td>
+                {{ entity.modele.libelle }}
+            </td>
+        </tr>
+        </tr>
+    {% endfor %}
+
+</table>

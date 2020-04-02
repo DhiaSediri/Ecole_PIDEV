@@ -1,0 +1,11 @@
+Esprit\EspritParcBundle\Entity\dhia:
+    type: entity
+    table: null
+    repositoryClass: Esprit\EspritParcBundle\Repository\dhiaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }

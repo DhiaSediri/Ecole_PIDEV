@@ -1,0 +1,28 @@
+<table>
+    <thead>
+    <tr>
+
+        <th>Classe</th>
+        <th>Matiere</th>
+        <th>Salle</th>
+        <th>Prof</th>
+        <th>Horaire</th>
+        <th>Jour</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for seance in seances %}
+        <tr>
+
+            <td>{{ seance.classe.nom }}</td>
+            <td>{{ seance.matiere.nom }}</td>
+            <td>{{ seance.salle.nom }}</td>
+            <td>{{ seance.prof.nom }}</td>
+            <td>{{ seance.horaire.nom }}</td>
+            <td>{{ seance.jour.nom }}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
