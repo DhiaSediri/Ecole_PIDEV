@@ -1,3 +1,0 @@
-esprit_projet_etudiant_homepage:
-    path:     /
-    defaults: { _controller: EspritProjetEtudiantBundle:Default:index }

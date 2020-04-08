@@ -6,7 +6,7 @@
  * Time: 14:37
  */
 
-namespace CinemaBundle\Entity;
+namespace ScolariteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

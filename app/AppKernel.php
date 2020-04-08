@@ -18,10 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Esprit\EspritParcBundle\EspritEspritParcBundle(),
-            new Esprit\ProjetEtudiantBundle\EspritProjetEtudiantBundle(),
-            new Esprit\ReservationBundle\EspritReservationBundle(),
-            new Esprit\ParcBundle\EspritParcBundle(),
             new Esprit\ScolariteBundle\EspritScolariteBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

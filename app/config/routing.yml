@@ -1,3 +1,14 @@
+#esprit_scolarite_mail:
+#    resource: "@EspritScolariteBundle/Controller/MailController.php"
+#   type:     annotation
+
+esprit_scolarite_security:
+    resource: "@EspritScolariteBundle/Controller/SecurityController.php"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 esprit_scolarite_seance:
     resource: "@EspritScolariteBundle/Controller/SeanceController.php"
     type:     annotation
@@ -20,18 +31,6 @@ esprit_scolarite_home:
 
 esprit_scolarite:
     resource: "@EspritScolariteBundle/Resources/config/routing.yml"
-    prefix:   /
-
-esprit_parc:
-    resource: "@EspritParcBundle/Resources/config/routing.yml"
-    prefix:   /
-
-esprit_reservation:
-    resource: "@EspritReservationBundle/Resources/config/routing.yml"
-    prefix:   /
-
-esprit_projet_etudiant:
-    resource: "@EspritProjetEtudiantBundle/Resources/config/routing.yml"
     prefix:   /
 
 esprit_esprit_parc:

@@ -5,7 +5,8 @@ namespace Esprit\ScolariteBundle\Controller;
 use Esprit\ScolariteBundle\Entity\Classe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Classe controller.
@@ -47,7 +48,7 @@ class ClasseController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($classe);
             $em->flush();
-
+            //$this->get('session')->getFlashBag()->add('notice','Validation faite avec succés');
             return $this->redirectToRoute('classe_show', array('id' => $classe->getId()));
         }
 
