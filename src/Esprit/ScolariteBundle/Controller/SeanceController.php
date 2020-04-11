@@ -2,6 +2,7 @@
 
 namespace Esprit\ScolariteBundle\Controller;
 
+use Esprit\ScolariteBundle\Entity\Classe;
 use Esprit\ScolariteBundle\Entity\Prof;
 use Esprit\ScolariteBundle\Entity\Seance;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -31,54 +32,65 @@ class SeanceController extends Controller
 
         $seances = $em->getRepository('EspritScolariteBundle:Seance')->findAll();
         $prof = $this->getDoctrine()->getRepository(Prof::class)->findAll();
+        $classe = $this->getDoctrine()->getRepository(Classe::class)->findAll();
 
         return $this->render('seance/index.html.twig', array(
             'seances' => $seances,
             'profs' => $prof,
             'emploiProf' => null,
+            'classes' => $prof,
+            'emploiClasse' => null,
         ));
     }
 
     /**
      * Lists all seance entities.
      *
-     * @Route("/afficherEmploi/", name="afficher_emploi")
+     * @Route("/afficherEmploiProf/", name="afficher_emploi_prof")
      * @Method("POST")
      */
-    public function afficherEmploi(Request $request)
+    public function afficherEmploiProf(Request $request)
     {
-//        $idProf = $request->request('prof');
-//        dump($idProf);
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $prof = $em->getRepository('EspritScolariteBundl:Prof')->findBy(array('prof' => $idProf));
-//
-//        $seances = $prof[0]->getSeances();
-//        $profs = $this->getDoctrine()->getRepository(Prof::class)->findAll();
-//
-//        return $this->render('seance/index.html.twig', array(
-//            'seances' => $seances,
-//            'profs' => $profs,
-//            'emploiProf' => null,
-//        ));
-
-//        $idProf = $request->request('prof');
-//        dump($request->getParameter("prof"));
-
           $idProf = $request->request->get('prof');
           $em = $this->getDoctrine()->getManager();
           $prof = $em->getRepository('EspritScolariteBundle:Prof')->findBy(array('id' => $idProf));
           $seances = $prof[0]->getSeances();
 
-//        $seances = $em->getRepository('EspritScolariteBundle:Seance')->findAll();
           $profs = $this->getDoctrine()->getRepository(Prof::class)->findAll();
+          $classes = $this->getDoctrine()->getRepository(Classe::class)->findAll();
 
         return $this->render('seance/index.html.twig', array(
             'seances' => $seances,
             'profs' => $profs,
+            'classes' => $classes,
+            'emploiProf' => null,
+            'emploiClasse' => null,
+        ));
+    }
+
+    /**
+     * Lists all seance entities.
+     *
+     * @Route("/afficherEmploiClasse/", name="afficher_emploi_classe")
+     * @Method("POST")
+     */
+    public function afficherEmploiClasse(Request $request)
+    {
+        $idClasse = $request->request->get('classe');
+        $em = $this->getDoctrine()->getManager();
+        $classe = $em->getRepository('EspritScolariteBundle:Classe')->findBy(array('id' => $idClasse));
+        $seances = $classe[0]->getSeances();
+
+        $classes = $this->getDoctrine()->getRepository(Classe::class)->findAll();
+        $profs = $this->getDoctrine()->getRepository(Prof::class)->findAll();
+
+        return $this->render('seance/index.html.twig', array(
+            'seances' => $seances,
+            'classes' => $classes,
+            'profs' => $profs,
+            'emploiClasse' => null,
             'emploiProf' => null,
         ));
-
     }
 
     public function testClasse($idClasse, $idJour, $idHoraire)
@@ -148,7 +160,6 @@ class SeanceController extends Controller
 
 
         }
-        // print("ndcndjcnjdkcn");
         return $this->render('seance/new.html.twig', array(
             'seance' => $seance,
             'form' => $form->createView(),
@@ -239,31 +250,20 @@ class SeanceController extends Controller
                  ->setUsername('your username')
                  ->setPassword('your password')
              ;
-             $mailer = new Swift_Mailer($transport);*/
- $mailer =new Swift_Mailer();
-            $idProf = $request->request->get('dProf');
+            $mailer = new Swift_Mailer($transport);*/
+            $mailer =new Swift_Mailer();
+            $idProf = $request->request->get('idProf');
             $em = $this->getDoctrine()->getManager();
             $prof = $em->getRepository('EspritScolariteBundle:Prof')->findBy(array('id' => $idProf));
             $seances = $prof[0]->getSeances();
             $message = (new \Swift_Message('Hello Email'))
                 ->setFrom('send@example.com')
                 ->setTo('recipient@example.com')
-                ->setBody(
-                    $this->renderView(
-                    // app/Resources/views/Emails/registration.html.twig
-                        'Emails/registration.html.twig',
-                        ['seances' => $seances]
-                    ),
-                    'text/html'
-                )
-
-
-            ;
+                ->setBody($this->renderView('@EspritScolarite/Mail/send_mail.html.twig',array('seances' => $seances)));
 
             $mailer->send($message);
 
-        }catch(\Exception $e){
-}
+        }catch(\Exception $e){}
 
 
         // or, you can also fetch the mailer service this way

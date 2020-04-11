@@ -1,26 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   {% set flashbag_notices = app.session.flashbag.get('notice') %}
-    {% if flashbag_notices is not empty %}
-<ul class="msg">
-    {% for notice in flashbag_notices %}
-    <li> {{ notice }} </li>
-    {% endfor %}
-</ul>
-{% endif %}
-    <div class="navbar navbar-inverse">
-        <div class="navbar-brand">
-            Send Mail
-        </div>
-    </div>
-
-    {{ form_start(f) }}
-    {{ form_widget(f) }}
-    <table>
+    {% for seance in seances %}
         <tr>
-            <td> <input type="submit" value="Envoyer" class="btn btn-success"/> </td>
+            <td>{{ seance.classe.nom }}</td>
+            <td>{{ seance.matiere.nom }}</td>
+            <td>{{ seance.salle.nom }}</td>
+            <td>{{ seance.prof.nom }}</td>
+            <td>{{ seance.horaire.nom }}</td>
+            <td>{{ seance.jour.nom }}</td>
         </tr>
-    </table>
-    {{ form_end(f) }}
+    {% endfor %}
 {% endblock %}

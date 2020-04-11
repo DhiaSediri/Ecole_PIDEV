@@ -62,7 +62,7 @@
         </li>
     </ul>
 
-    <form action="{{ path('afficher_emploi') }}" method="post">
+    <form action="{{ path('afficher_emploi_prof') }}" method="post">
         <select id="selectedProf" name="prof" id="prof">
             {% for prof in profs %}
                 <option value="{{ prof.id }}">{{ prof.nom }}</option>
@@ -70,50 +70,18 @@
             {% endfor %}
         </select>
         <input type="submit" value="Afficher emploi">
-        <a id="btnEnvoyerEmploi" href="#">envoyer l'emploi</a>
+        <a id="btnEnvoyerEmploi" href="#">Envoyer l'emploi</a>
     </form>
-    {% if emploiProf != null %}
-        <h1>list emploi prof</h1>
 
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Classe</th>
-                <th>Matiere</th>
-                <th>Salle</th>
-                <th>Prof</th>
-                <th>Horaire</th>
-                <th>Jour</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for seance in emploiProf %}
-                <tr>
-                    <td><a href="{{ path('seance_show', { 'id': seance.id }) }}">{{ seance.id }}</a></td>
-                    <td>{{ seance.classe.nom }}</td>
-                    <td>{{ seance.matiere.nom }}</td>
-                    <td>{{ seance.salle.nom }}</td>
-                    <td>{{ seance.prof.nom }}</td>
-                    <td>{{ seance.horaire.nom }}</td>
-                    <td>{{ seance.jour.nom }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('seance_show', { 'id': seance.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('seance_edit', { 'id': seance.id }) }}">edit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
+    <form action="{{ path('afficher_emploi_classe') }}" method="post">
+        <select id="selectedClasse" name="classe" id="classe">
+            {% for classe in classes %}
+                <option value="{{ classe.id }}">{{ classe.nom }}</option>
+
             {% endfor %}
-            </tbody>
-        </table>
-
-    {% endif %}
+        </select>
+        <input type="submit" value="Afficher emploi">
+    </form>
 
 
 {% endblock %}

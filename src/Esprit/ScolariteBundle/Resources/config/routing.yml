@@ -4,4 +4,4 @@ esprit_scolarite_homepage:
 
 #esprit_scolarite_mail:
 #    path:     /mail
-#   defaults: { _controller: EspritScolariteBundle:Mail:send }
+#    defaults: { _controller: EspritScolariteBundle:Mail:send }

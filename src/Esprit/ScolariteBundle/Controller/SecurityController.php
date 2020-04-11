@@ -12,16 +12,21 @@ use Symfony\Component\HttpFoundation\Request;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/add")
+     * @Route("/adduser")
      */
     public function addAction()
     {
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->createUser();
-        
-        return $this->render('EspritScolariteBundle:Security:user_home.html.twig', array(
-            // ...
-        ));
+
+        $user->setUsername('aaaaaaaa');
+        $user->setRoles(array('ROLE_ADMIN'));
+        $user->setEmail('aaaaaaaaa@gmail.com');
+        $user->setPlainPassword('aaaaaaaaa');
+        $user->setEnabled(true);
+        $userManager->updateUser($user);
+
+        return $this->forward('EspritScolariteBundle:Security:redirect');
     }
 
     /**
@@ -29,23 +34,27 @@ class SecurityController extends Controller
      */
     public function redirectAction(Request $request)
     {
-        //$authChecker = $this->container->get('security.authorization_checker');
+        $authChecker = $this->container->get('security.authorization_checker');
 
-        if ($this->denyAccessUnlessGranted('["ROLE_ADMIN"]')){
-            die('tes');
-            return $this->render('@EspritScolarite:Security:user_home.html.twig');
+        if($authChecker->isGranted('ROLE_ADMIN')){
+            return $this->render('@EspritScolarite/Security/admin_home.html.twig');
         }
-
-
-        elseif ($this->denyAccessUnlessGranted('ROLE_ADMIN')){
-
-            return $this->render('@EspritScolarite:Security:admin_home.html.twig');
+        elseif ($authChecker->isGranted('ROLE_USER')){
+            return $this->render('@EspritScolarite/Security/user_home.html.twig');
         }
-
         else{
-
-            return $this->render('@FosUser:Security:login.html.twig');
+            return $this->render('@FosUser/Security/login.html.twig');
         }
+
+        #if ($this->denyAccessUnlessGranted('["ROLE_ADMIN"]')){
+            #return $this->render('@EspritScolarite:Security:user_home.html.twig');
+        #}
+        #elseif ($this->denyAccessUnlessGranted('ROLE_ADMIN')){
+            #return $this->render('@EspritScolarite:Security:admin_home.html.twig');
+        #}
+        #else{
+            #return $this->render('@FosUser:Security:login.html.twig');
+        #}
     }
 
 }
